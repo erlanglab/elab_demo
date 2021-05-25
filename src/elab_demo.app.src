@@ -1,15 +1,16 @@
-{application, elab_demo,
- [{description, "Erlang Lab demo app"},
-  {vsn, "0.1.0"},
-  {registered, []},
-  {mod, {elab_demo_app, []}},
-  {applications,
-   [kernel,
-    stdlib
-   ]},
-  {env,[]},
-  {modules, []},
+{application, elab_demo, [
+    {description, "Erlang Lab demo app"},
+    {vsn, "0.1.0"},
+    {registered, []},
+    {mod, {elab_demo_app, []}},
+    {applications, [
+        kernel,
+        stdlib,
+        mnesia
+    ]},
+    {env, []},
+    {modules, []},
 
-  {licenses, ["Apache 2.0"]},
-  {links, []}
- ]}.
+    {licenses, ["Apache 2.0"]},
+    {links, []}
+]}.

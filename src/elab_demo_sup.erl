@@ -26,10 +26,21 @@ start_link() ->
 %%                  type => worker(),       % optional
 %%                  modules => modules()}   % optional
 init([]) ->
-    SupFlags = #{strategy => one_for_all,
-                 intensity => 0,
-                 period => 1},
-    ChildSpecs = [],
+    SupFlags = #{
+        strategy => one_for_all,
+        intensity => 0,
+        period => 1
+    },
+    ChildSpecs = [
+        #{
+            id => mnesia_test,
+            start => {mnesia_test, start_link, []},
+            restart => temporary,
+            shutdown => brutal_kill,
+            type => worker,
+            modules => [mnesia_test]
+        }
+    ],
     {ok, {SupFlags, ChildSpecs}}.
 
 %% internal functions
